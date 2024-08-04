@@ -1,45 +1,43 @@
 <template>
   <div>
-    <NavBar />
+    <header>
+      <NavBar />
 
-    <!-- TODO!: Fix header height. Center it -->
-    <header
-      class="h-[600px] flex flex-col justify-center items-center section-margin"
-    >
-      <!-- Text -->
-      <div class="flex flex-col items-center">
-        <h1 class="text-6xl font-semibold tracking-tighter">
-          Land job at FAANG
-        </h1>
+      <div
+        class="pt-20 min-h-[700px] flex flex-col justify-center items-center section-margin"
+      >
+        <div class="flex flex-col items-center">
+          <h1 class="text-6xl font-semibold tracking-tighter">
+            Land job at FAANG
+          </h1>
 
-        <p
-          class="max-w-[768px] text-center font-medium text-2xl mt-4 tracking-tight mb-8"
-        >
-          42Mentor is a mentorship program designed to help software engineers
-          land jobs at FAANG-level companies.
-        </p>
-
-        <ULink :to="formLink">
-          <button
-            class="text-white text-[17px] bg-blue rounded-md h-10 px-[18px]"
+          <p
+            class="max-w-[768px] text-center font-medium text-2xl mt-4 tracking-tight mb-8"
           >
-            Get Started
-          </button>
-        </ULink>
-      </div>
+            42Mentor is a mentorship program designed to help software engineers
+            land jobs at FAANG-level companies.
+          </p>
 
-      <!-- FAANG Icons -->
-      <div class="flex items-center gap-x-10 mt-14">
-        <img src="~/assets/img/icons/facebook.svg" alt="Facebook" />
-        <img src="~/assets/img/icons/apple.svg" alt="Apple" />
-        <img src="~/assets/img/icons/amazon-i.svg" alt="Amazon" />
-        <img src="~/assets/img/icons/netflix.svg" alt="Netflix" />
-        <img src="~/assets/img/icons/google-i.svg" alt="Google" />
+          <ULink :to="formLink">
+            <button
+              class="text-white text-[17px] bg-blue rounded-md h-10 px-[18px]"
+            >
+              Get Started
+            </button>
+          </ULink>
+        </div>
+
+        <div class="flex items-center gap-x-10 mt-14">
+          <img src="~/assets/img/icons/facebook.svg" alt="Facebook" />
+          <img src="~/assets/img/icons/apple.svg" alt="Apple" />
+          <img src="~/assets/img/icons/amazon-i.svg" alt="Amazon" />
+          <img src="~/assets/img/icons/netflix.svg" alt="Netflix" />
+          <img src="~/assets/img/icons/google-i.svg" alt="Google" />
+        </div>
       </div>
     </header>
 
     <main>
-      <!-- Mentorship tracks -->
       <section class="wrapper section-margin">
         <h1 class="title margin-block">Mentorship tracks</h1>
 
@@ -90,65 +88,27 @@
           </div>
         </div>
       </section>
-
-      <!-- Curriculum -->
       <section class="wrapper section-margin">
         <h1 class="title margin-block">Curriculum</h1>
 
         <div class="flex justify-center">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
-            <div class="curriculum__block">
-              <h2 class="curriculum__block_title">Algorithms</h2>
+            <div
+              v-for="(item, index) in curriculum"
+              :key="index"
+              class="curriculum__block"
+            >
+              <h2 class="curriculum__block_title">{{ item.title }}</h2>
 
-              <div class="curriculum__block_week">12 weeks</div>
+              <div class="curriculum__block_week">
+                {{ item.duration }} weeks
+              </div>
 
-              <p>
-                Is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s
-              </p>
-            </div>
-
-            <div class="curriculum__block">
-              <h2 class="curriculum__block_title">System Design</h2>
-
-              <div class="curriculum__block_week">4 weeks</div>
-
-              <p>
-                Is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s
-              </p>
-            </div>
-
-            <div class="curriculum__block">
-              <h2 class="curriculum__block_title">Domain Specific Coding</h2>
-
-              <div class="curriculum__block_week">3 weeks</div>
-
-              <p>
-                Is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s
-              </p>
-            </div>
-
-            <div class="curriculum__block">
-              <h2 class="curriculum__block_title">Behavioral & Resume</h2>
-
-              <div class="curriculum__block_week">3 weeks</div>
-
-              <p>
-                Is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s
-              </p>
+              <p>{{ item.description }}</p>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- Mentros -->
       <section class="wrapper section-margin">
         <h1 class="title margin-block">Mentors</h1>
 
@@ -210,8 +170,6 @@
           </div>
         </div>
       </section>
-
-      <!-- Alumni -->
       <section class="wrapper section-margin">
         <h1 class="title margin-block">Alumni</h1>
 
@@ -232,12 +190,13 @@
               </p>
 
               <div class="mt-5">
-                <div class="flex gap-2 mb-1">
+                <ULink
+                  to="https://www.linkedin.com"
+                  class="flex items-start gap-2 mb-1"
+                >
                   <h2 class="text-blue text-lg font-medium">Anvar Kayumov</h2>
-                  <ULink to="https://www.linkedin.com">
-                    <img src="~/assets/img/icons/linkedin.svg" alt="LinkedIn" />
-                  </ULink>
-                </div>
+                  <img src="~/assets/img/icons/linkedin.svg" alt="LinkedIn" />
+                </ULink>
 
                 <span class="text-cgray">Software Engineer at Meta</span>
               </div>
@@ -245,8 +204,6 @@
           </div>
         </div>
       </section>
-
-      <!-- FAQ -->
       <section class="wrapper section-margin">
         <h1 class="title margin-block">Frequently asked questions</h1>
 
@@ -297,8 +254,6 @@
           </ULink>
         </div>
       </section>
-
-      <!-- CTA -->
       <section class="wrapper mb-28">
         <div class="flex flex-col items-center justify-center">
           <h1 class="text-6xl font-semibold tracking-tighter">
@@ -320,7 +275,7 @@
       </section>
     </main>
 
-    <footer class="py-10 border-t border-[#E5E5E5]">
+    <footer class="py-14 border-t border-[#E5E5E5]">
       <div class="wrapper flex flex-col items-center justify-center">
         <ULink to="/">
           <img src="~/assets/img/icons/logo.svg" alt="42Mentor" />
@@ -369,6 +324,32 @@ const faq = [
     answer: "Summer 2024 batch will start in August 2024.",
   },
 ];
+const curriculum = [
+  {
+    title: "Algorithms",
+    duration: 12,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque perferendis asperiores, iusto magnam ex quia.",
+  },
+  {
+    title: "System Design",
+    duration: 4,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque perferendis asperiores, iusto magnam ex quia.",
+  },
+  {
+    title: "Domain Specific Coding",
+    duration: 3,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque perferendis asperiores, iusto magnam ex quia.",
+  },
+  {
+    title: "Behavioral & Resume",
+    duration: 3,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque perferendis asperiores, iusto magnam ex quia.",
+  },
+];
 const formLink =
   "https://docs.google.com/forms/d/e/1FAIpQLSdWQNp1RxpRn2DpH0F0fLCq5if_wQmABRpFe0G1iPXrY4OiUA/viewform";
 
@@ -406,7 +387,7 @@ const toggleQuestion = (index) => {
 
 .curriculum {
   &__block {
-    @apply max-w-[450px] bg-cgray-bg rounded-xl px-[25px] pt-[25px] pb-[35px] transition-all duration-200 hover:xl:shadow-lg;
+    @apply max-w-[450px] bg-cgray-bg rounded-xl px-[25px] pt-[25px] pb-[35px];
 
     &_title {
       @apply text-[26px] font-semibold tracking-tight leading-normal mb-[30px];
