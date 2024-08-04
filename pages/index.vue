@@ -2,7 +2,6 @@
   <div>
     <NavBar />
 
-    <!-- TODO!: Fix header height. Center it -->
     <header
       class="h-[600px] flex flex-col justify-center items-center section-margin"
     >
